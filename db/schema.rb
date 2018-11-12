@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_12_203231) do
+ActiveRecord::Schema.define(version: 2018_11_12_211033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "carings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "plant_id"
+    t.string "status", default: "pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plant_id"], name: "index_carings_on_plant_id"
+    t.index ["user_id"], name: "index_carings_on_user_id"
+  end
+
+  create_table "plants", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_plants_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +46,7 @@ ActiveRecord::Schema.define(version: 2018_11_12_203231) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "carings", "plants"
+  add_foreign_key "carings", "users"
+  add_foreign_key "plants", "users"
 end
