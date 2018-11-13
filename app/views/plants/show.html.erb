@@ -1,6 +1,24 @@
 <div class="container">
-  <h1><%= @plant.name %></h1>
-
-  <p><%= @plant.description %></p>
+  <div class="info-container">
+  <div class="row">
+    <div class="col-xs-6">
+      <img src="https://picsum.photos/400/300" alt="plant_image">
+    </div>
+    <div class="col-xs-6">
+      <h1><%= @plant.name %></h1>
+      <p><%= @plant.description %></p>
+    </div>
+  </div>
+  </div>
+  <div class="options">
+    <%= link_to 'Back', home_path %>
+    <%= link_to 'Edit*', edit_plant_path %>
+    <%= link_to 'Remove*', home_path %>
+  </div>
+    <div class="contact-section">
+      <p class="prompt">Interested in taking care of <%= @plant.name %>? Make a request, or get into contact here!</p>
+      <%= link_to 'Make an Offer*', new_plant_caring_path(params[:id]), class: "btn btn-primary" %>
+      <p class="contact"> User's Email: <%= @plant.user.email %></p>
+    </div>
 </div>
 
