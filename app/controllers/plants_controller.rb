@@ -1,5 +1,6 @@
 class PlantsController < ApplicationController
   before_action :set_plant, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @plants = Plant.all
@@ -14,7 +15,8 @@ class PlantsController < ApplicationController
 
   def create
     @plant = Plant.new(plant_params)
-    if @plant.save
+    @plant.user = current_user
+    if @plant.save!
       redirect_to plant_path(@plant), notice: 'The plant was successfully updated.'
     else
       render :new
@@ -40,7 +42,7 @@ class PlantsController < ApplicationController
   private
 
   def plant_params
-    params.require(:plant).permit(:name, :description)
+    params.require(:plant).permit(:name, :description, :photo)
   end
 
   def set_plant
