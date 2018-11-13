@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2018_11_12_211033) do
   create_table "carings", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "plant_id"
-    t.string "status", default: "pending"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["plant_id"], name: "index_carings_on_plant_id"
