@@ -1,10 +1,6 @@
-<div class="banner">
-  <h1>Airpnt</h1>
-  <div class="call-to-action">
-    <%= link_to 'Sign in', new_user_session_path %>
-    <%= link_to 'Register', new_user_registration_path, class: "btn btn-primary" %>
-  </div>
-</div>
+<% unless user_signed_in? %>
+  <%= render 'shared/banner' %>
+<% end %>
 
 <div class="container">
   <h3>Find a plant to take care of</h3>
@@ -13,7 +9,7 @@
       <%= link_to plant_path(plant) do %>
         <div class="plant-card">
           <p><%= plant.name %></p>
-          <%= image_tag("avatar", class: 'avatar') %>
+          <%= image_tag("avatar", class: 'petit-avatar-des-cards') %>
         </div>
       <% end %>
     <% end %>
