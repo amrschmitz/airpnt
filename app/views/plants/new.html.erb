@@ -1,8 +1,9 @@
 <%= simple_form_for @plant do |f| %>
 <%= f.input :name %>
-<%= f.submit "add a name", class: "btn btn-primary" %>
+<br>
 <%= f.input :description %>
-<%= f.submit "add a description", class: "btn btn-primary" %>
+<br>
 <%= f.input :photo %>
 <%= f.input :photo_cache, as: :hidden %>
+<%= f.submit "add a Plant", class: "btn btn-primary" %>
 <% end %>
