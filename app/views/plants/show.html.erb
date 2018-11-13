@@ -5,15 +5,24 @@
       <img src="https://picsum.photos/400/300" alt="plant_image">
     </div>
     <div class="col-xs-6">
+        <div class="options">
+          
+          <%= link_to root_path do %>
+            <i class="fas fa-chevron-left"></i>
+          <% end %>
+          
+          <%= link_to edit_plant_path do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+
+          <%= link_to root_path do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        </div>
       <h1><%= @plant.name %></h1>
       <p><%= @plant.description %></p>
     </div>
   </div>
-  </div>
-  <div class="options">
-    <%= link_to 'Back', root_path %>
-    <%= link_to 'Edit*', edit_plant_path %>
-    <%= link_to 'Remove*', home_path %>
   </div>
     <div class="contact-section">
       <p class="prompt">Interested in taking care of <%= @plant.name %>? Make a request, or get into contact here!</p>
