@@ -14,7 +14,8 @@ class PlantsController < ApplicationController
 
   def create
     @plant = Plant.new(plant_params)
-    if @plant.save
+    @plant.user = current_user
+    if @plant.save!
       redirect_to plant_path(@plant), notice: 'The plant was successfully updated.'
     else
       render :new
