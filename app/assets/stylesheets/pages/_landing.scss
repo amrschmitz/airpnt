@@ -1,0 +1,62 @@
+.banner {
+  background-image: linear-gradient(rgba(80, 80, 80, 0.6), rgba(80, 80, 80, 0.1)), url('https://picsum.photos/1450/1000');
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.call-to-action {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  a {
+    color: white;
+    font-size: 14px;
+    margin: 5px;
+  }
+}
+
+.plant-card {
+  background-image: linear-gradient(rgba(80, 80, 80, 0.6), rgba(80, 80, 80, 0.1)), url('https://picsum.photos/200/300');
+  color: #4a4a4a;
+  width: 200px;
+  height: 300px;
+  border-radius: 5px;
+  margin: 10px;
+  position: relative;
+  p {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    margin-top: 20px;
+  }
+}
+
+.plant-card:hover {
+  box-shadow: 5px 5px 10px 0px rgba(148,148,148,1);
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  border: 1px solid white;
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
