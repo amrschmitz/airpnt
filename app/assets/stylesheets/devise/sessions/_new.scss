@@ -1,0 +1,9 @@
+.sign-wrapper {
+  position: center;
+  display: flex;
+  justify-content: center;
+  .sign-box {
+    width: 400px;
+    padding: 30px;
+  }
+}
