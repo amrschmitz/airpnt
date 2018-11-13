@@ -1,16 +1,10 @@
 Rails.application.routes.draw do
-  get 'carings/new'
-  get 'carings/create'
-  get 'carings/index'
-  get 'carings/show'
-  get 'carings/edit'
-  get 'carings/update'
-  get 'carings/destroy'
   devise_for :users
-  root to: 'pages#home'
+  root to: 'pages#landing'
+  get 'home', to: 'plants#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :plants do
-    resources :carings
+  resources :plants, except: [:index] do
+    resources :carings, except: [:destroy]
   end
 end
