@@ -10,10 +10,12 @@
   <h3>Find a plant to take care of</h3>
   <div class="wrapper">
     <% Plant.all.each do |plant| %>
-      <div class="plant-card">
-        <p><%= plant.name %></p>
-        <%= image_tag("avatar", class: 'avatar') %>
-      </div>
+      <%= link_to plant_path(plant) do %>
+        <div class="plant-card">
+          <p><%= plant.name %></p>
+          <%= image_tag("avatar", class: 'avatar') %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
