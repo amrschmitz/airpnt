@@ -6,17 +6,20 @@
     </div>
     <div class="col-xs-6">
         <div class="options">
-          
+
           <%= link_to root_path do %>
             <i class="fas fa-chevron-left"></i>
           <% end %>
-          
+
+          <% if policy(@plant).edit? %>
           <%= link_to edit_plant_path do %>
             <i class="fas fa-edit"></i>
+            <% end %>
           <% end %>
-
+          <% if policy(@plant).destroy? %>
           <%= link_to root_path do %>
             <i class="fas fa-trash-alt"></i>
+            <% end %>
           <% end %>
         </div>
       <h1><%= @plant.name %></h1>
