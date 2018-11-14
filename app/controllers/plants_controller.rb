@@ -3,7 +3,7 @@ class PlantsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @plants = Plant.all
+    @plants = policy_scope(Plant)
   end
 
   def show
@@ -11,11 +11,12 @@ class PlantsController < ApplicationController
 
   def new
     @plant = Plant.new
+    authorize(@plant)
   end
 
   def create
-    @plant = Plant.new(plant_params)
-    @plant.user = current_user
+    @plant = current_user.plants.build(plant_params)
+    authorize(@plant)
     if @plant.save!
       redirect_to plant_path(@plant), notice: 'The plant was successfully updated.'
     else
@@ -47,5 +48,6 @@ class PlantsController < ApplicationController
 
   def set_plant
     @plant = Plant.find(params[:id])
+    authorize(@plant)
   end
 end

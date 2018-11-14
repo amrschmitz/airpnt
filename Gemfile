@@ -16,6 +16,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'carrierwave', '~> 1.2'
+gem "pundit"
 
 # devise gem
 gem 'devise'
