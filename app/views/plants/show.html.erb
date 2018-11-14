@@ -29,7 +29,7 @@
   </div>
     <div class="contact-section">
       <p class="prompt">Interested in taking care of <%= @plant.name %>? Make a request, or get into contact here!</p>
-      <%= link_to 'Make an Offer*', new_plant_caring_path(params[:id]), class: "btn btn-primary" %>
+      <%= link_to 'Make an Offer*', new_plant_caring_path(params[:id]), class: "btn btn-primary", data: {confirm: 'Request successfully submitted!'} %>
       <p class="contact"> User's Email: <%= @plant.user.email %></p>
     </div>
 </div>

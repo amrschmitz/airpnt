@@ -10,16 +10,16 @@ class CaringsController < ApplicationController
   end
 
   def new
-    @caring = Caring.new
+    @user = current_user
+    @plant = Plant.find(params[:plant_id])
+    @caring = Caring.new(user_id: @user.id, plant_id: params[:plant_id], status: "Pending")
+    @caring.save
+    authorize @caring
+    redirect_to plant_path(@plant), notice: 'Request Submitted!.'
   end
 
   def create
-    @caring = Caring.new(caring_params)
-    if @caring.save
-      redirect_to caring_path(@caring), notice: 'The caring was successfully updated.'
-    else
-      render :new
-    end
+    @caring = Caring.new()
   end
 
   def edit
@@ -41,7 +41,7 @@ class CaringsController < ApplicationController
   private
 
   def caring_params
-    params.require(:caring).permit(:name, :description)
+    params.require(:caring).permit(:status)
   end
 
   def set_caring
