@@ -7,13 +7,13 @@
     <% end %>
     <div class="actions-icons-right">
       <% if policy(@plant).edit? %>
-      <%= link_to edit_plant_path do %>
-        <i class="fas fa-edit"></i>
+        <%= link_to edit_plant_path do %>
+          <i class="fas fa-edit"></i>
         <% end %>
       <% end %>
       <% if policy(@plant).destroy? %>
-      <%= link_to root_path do %>
-        <i class="fas fa-trash-alt"></i>
+        <%= link_to plant_path(@plant), html_options = { method: 'delete'} do %>
+          <i class="fas fa-trash-alt"></i>
         <% end %>
       <% end %>
     </div>
@@ -21,7 +21,7 @@
 
   <!-- Information section -->
   <div class="info-container">
-    <img src="https://picsum.photos/400/300" alt="plant_image">
+    <%= cl_image_tag @plant.photo, height: 400, width: 400 %>
     <div class="options">
       <h1><%= @plant.name %></h1>
       <p><%= @plant.description %></p>
