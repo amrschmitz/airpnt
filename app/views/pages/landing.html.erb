@@ -7,7 +7,11 @@
   <div class="wrapper">
     <% Plant.all.each do |plant| %>
       <%= link_to plant_path(plant) do %>
-        <div class="plant-card" style="background-image: url('<%= cl_image_path plant.photo %>')">
+        <% if plant.photo.nil? %>
+          <div class="plant-card">
+        <% else %>
+          <div class="plant-card" style="background-image: url('<%= cl_image_path plant.photo %>')">
+        <% end %>
           <p><%= plant.name %></p>
           <%= image_tag("avatar", class: 'petit-avatar-des-cards') %>
         </div>
