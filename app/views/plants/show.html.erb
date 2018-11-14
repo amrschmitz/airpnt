@@ -1,36 +1,40 @@
 <div class="container">
-  <div class="info-container">
-  <div class="row">
-    <div class="col-xs-6">
-      <img src="https://picsum.photos/400/300" alt="plant_image">
+
+  <!-- Actions section -->
+  <div class="actions-icons">
+    <%= link_to root_path do %>
+      <i class="fas fa-chevron-left"></i>
+    <% end %>
+    <div class="actions-icons-right">
+      <% if policy(@plant).edit? %>
+      <%= link_to edit_plant_path do %>
+        <i class="fas fa-edit"></i>
+        <% end %>
+      <% end %>
+      <% if policy(@plant).destroy? %>
+      <%= link_to root_path do %>
+        <i class="fas fa-trash-alt"></i>
+        <% end %>
+      <% end %>
     </div>
-    <div class="col-xs-6">
-        <div class="options">
+  </div>
 
-          <%= link_to root_path do %>
-            <i class="fas fa-chevron-left"></i>
-          <% end %>
-
-          <% if policy(@plant).edit? %>
-          <%= link_to edit_plant_path do %>
-            <i class="fas fa-edit"></i>
-            <% end %>
-          <% end %>
-          <% if policy(@plant).destroy? %>
-          <%= link_to root_path do %>
-            <i class="fas fa-trash-alt"></i>
-            <% end %>
-          <% end %>
-        </div>
+  <!-- Information section -->
+  <div class="info-container">
+    <img src="https://picsum.photos/400/300" alt="plant_image">
+    <div class="options">
       <h1><%= @plant.name %></h1>
       <p><%= @plant.description %></p>
+      <%= link_to 'Offer to take care of', new_plant_caring_path(params[:id]), class: "btn btn-primary" %>
     </div>
   </div>
+
+  <!-- Contact section -->
+  <div class="contact-section">
+    <p class="prompt">
+      Interested in taking care of <%= @plant.name %>? Make an offer, or get into contact here!
+    </p>
+    <p> User's Email: <%= @plant.user.email %></p>
   </div>
-    <div class="contact-section">
-      <p class="prompt">Interested in taking care of <%= @plant.name %>? Make a request, or get into contact here!</p>
-      <%= link_to 'Make an Offer*', new_plant_caring_path(params[:id]), class: "btn btn-primary" %>
-      <p class="contact"> User's Email: <%= @plant.user.email %></p>
-    </div>
 </div>
 
