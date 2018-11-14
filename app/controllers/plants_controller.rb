@@ -7,6 +7,14 @@ class PlantsController < ApplicationController
   end
 
   def show
+    # @plant = Plant.where.not(latitude: nil, longitude: nil)
+
+    @markers = [
+      {
+        lng: @plant.longitude,
+        lat: @plant.latitude
+      }
+    ]
   end
 
   def new

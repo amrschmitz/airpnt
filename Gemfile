@@ -16,7 +16,9 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'carrierwave', '~> 1.2'
-gem "pundit"
+gem 'pundit'
+gem 'geocoder'
+gem 'cloudinary'
 
 # devise gem
 gem 'devise'
@@ -33,5 +35,4 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
-  gem 'cloudinary'
 end
