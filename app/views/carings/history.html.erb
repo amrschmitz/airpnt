@@ -1,0 +1,16 @@
+<div class="container">
+<h1>Pending Requests</h1>
+ <% if @carings = "" %>
+  <%= "You have no pending requests" %>
+  <% else %>
+  <% @carings.each do |caring| %>
+      <div class="caring-card">
+        <h2 class="status"> caring.status </h2>
+        <h3><%= caring.plant.name %></h3>
+        <!-- <p class="timeframe"><%= caring.start_date %> to <%= caring.end_date %></p> -->
+        <!-- caring.plant.user_id to determine who's avatar goes here -->
+        <%= image_tag("avatar", class: 'petit-avatar-des-cards') %>
+      </div>
+      <% end %>
+  <% end %>
+</div>

@@ -1,8 +1,9 @@
 class CaringsController < ApplicationController
   before_action :set_caring, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @carings = Caring.all
+  def history
+    @carings = Caring.where("user" == current_user)
+    authorize(@carings)
   end
 
   def show
