@@ -7,8 +7,8 @@
   <div class="wrapper">
     <% Plant.all.each do |plant| %>
       <%= link_to plant_path(plant) do %>
-        <% if plant.photo.nil? %>
-          <div class="plant-card">
+        <% if plant.photo.file.nil? %>
+          <div class="plant-card" style="background-color: black">
         <% else %>
           <div class="plant-card" style="background-image: url('<%= cl_image_path plant.photo %>')">
         <% end %>
