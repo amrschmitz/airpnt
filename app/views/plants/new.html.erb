@@ -1,13 +1,17 @@
-<%= simple_form_for @plant do |f| %>
-<%= f.input :name %>
-<br>
-<%= f.input :description %>
-<br>
-<%= f.input :address %>
-<br>
-<%= f.input :photo %>
-<%= f.input :photo_cache, as: :hidden %>
-<br>
-<%= f.submit "add a Plant", class: "btn btn-primary" %>
+<div class="sign-wrapper">
+  <div class="sign-box">
+    <%= simple_form_for @plant do |f| %>
+    <%= f.input :name %>
+    <br>
+    <%= f.input :description %>
+    <br>
+    <%= f.input :address %>
+    <br>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <br>
+    <%= f.submit "Add a plant", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
 
-<% end %>
