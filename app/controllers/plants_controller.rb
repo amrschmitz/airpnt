@@ -45,7 +45,7 @@ class PlantsController < ApplicationController
 
   def destroy
     @plant.destroy
-    redirect_to plants_path, notice: 'The plant was successfully destroyed.'
+    redirect_to root_path, notice: 'The plant was successfully destroyed.'
   end
 
   private
