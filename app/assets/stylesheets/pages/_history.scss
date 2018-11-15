@@ -1,0 +1,46 @@
+
+.caring-card  {
+  display: flex;
+  background: white;
+  background-size: cover;
+  color: #4a4a4a;
+  width: 600px;
+  height: 300px;
+  border-radius: 5px;
+  margin: 10px;
+  position: relative;
+}
+
+.name {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  margin: 0px;
+}
+
+.status {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  margin: 0px;
+}
+
+.accepted {
+  color: green;
+}
+
+.declined {
+  color: red;
+}
+
+.pending {
+  color: orange;
+}
+
+.accept-decline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 30px;
+}
