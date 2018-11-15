@@ -10,9 +10,16 @@
   justify-content: space-between;
 }
 
+.search-bar-general {
+  width: 40vw;
+  border-radius: 3px;
+  border: none;
+}
+
 /* Logo */
 .navbar-wagon-brand img {
   height: 50px;
+  margin-left: 10px;
 }
 
 /* User Avatar */
