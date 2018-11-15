@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_14_153356) do
+
+
+ActiveRecord::Schema.define(version: 2018_11_15_153400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +23,8 @@ ActiveRecord::Schema.define(version: 2018_11_14_153356) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "date_beginning"
+    t.date "date_end"
     t.index ["plant_id"], name: "index_carings_on_plant_id"
     t.index ["user_id"], name: "index_carings_on_user_id"
   end
@@ -35,6 +39,9 @@ ActiveRecord::Schema.define(version: 2018_11_14_153356) do
     t.string "address"
     t.float "latitude"
     t.float "longitude"
+    t.date "date_beginning"
+    t.date "date_end"
+
     t.index ["user_id"], name: "index_plants_on_user_id"
   end
 
