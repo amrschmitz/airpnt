@@ -13,7 +13,7 @@
           <div class="plant-card" style="background-image: url('<%= cl_image_path plant.photo %>')">
         <% end %>
           <p><%= plant.name %></p>
-          <%= image_tag("avatar.png", class: 'petit-avatar-des-cards') %>
+          <%= cl_image_tag current_user.photo, class: 'petit-avatar-des-cards' %>
         </div>
       <% end %>
     <% end %>
