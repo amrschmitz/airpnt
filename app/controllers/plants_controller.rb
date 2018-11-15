@@ -35,6 +35,16 @@ class PlantsController < ApplicationController
   def edit
   end
 
+  def search
+    @plants = Plant.where(user: current_user)
+    authorize(@plants)
+  end
+
+  def my_plants
+    @plants = Plant.where(user: current_user)
+    authorize(@plants)
+  end
+
   def update
     if @plant.update(plant_params)
       redirect_to plant_path(@plant), notice: 'The plant was successfully updated.'

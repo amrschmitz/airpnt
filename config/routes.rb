@@ -6,6 +6,12 @@ Rails.application.routes.draw do
   # changement
   resources :plants, except: [:index] do
     resources :carings, except: [:destroy]
+    collection do
+      get 'search'
+    end
+    collection do
+      get 'my_plants'
+    end
   end
 
   get 'history', to: 'carings#history'

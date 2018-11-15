@@ -21,6 +21,14 @@ class PlantPolicy < ApplicationPolicy
     user_is_owner
   end
 
+  def search?
+    true
+  end
+
+  def my_plants?
+    true
+  end
+
   private
 
   def user_is_owner
