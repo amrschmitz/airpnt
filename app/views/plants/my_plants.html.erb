@@ -5,7 +5,7 @@
 <div class="container">
   <h3>Your plants</h3>
   <div class="wrapper">
-    <% Plant.all.each do |plant| %>
+    <% @plants.all.each do |plant| %>
       <%= link_to plant_path(plant) do %>
         <% if plant.photo.file.nil? %>
           <div class="plant-card" style="background-color: black">
