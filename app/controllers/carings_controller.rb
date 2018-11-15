@@ -1,9 +1,10 @@
 class CaringsController < ApplicationController
-  before_action :set_caring, only: [:show, :edit, :decline, :accept, :update, :destroy]
+  before_action :set_caring, only: [:show, :edit, :accept, :decline, :update, :destroy]
 
   def history
-    @carings = Caring.where("user" == current_user)
-    authorize(@carings)
+    @sent = current_user.carings
+    @received = current_user.requested_carings
+    authorize(@sent)
   end
 
   def show
