@@ -18,7 +18,7 @@
         <h1 class="name"><%= caring.plant.name %></h1>
         <p class="timeframe"><%= caring.date_beginning %> to <%= caring.date_end %></p>
         <!-- caring.plant.user_id to determine who's avatar goes here -->
-        <%= image_tag("avatar", class: 'petit-avatar-des-cards') %>
+        <%= cl_image_tag caring.plant.user.photo, class: 'petit-avatar-des-cards' %>
       </div>
     <% end %>
   <% end %>
@@ -39,7 +39,7 @@
         <h1 class="name"><%= caring.plant.name %></h1>
         <p class="timeframe"><%= caring.date_beginning %> to <%= caring.date_end %></p>
         <!-- caring.plant.user_id to determine who's avatar goes here -->
-        <%= image_tag("avatar", class: 'petit-avatar-des-cards') %>
+        <%= cl_image_tag caring.plant.user.photo, class: 'petit-avatar-des-cards' %>
       </div>
     <% end %>
   <% end %>
