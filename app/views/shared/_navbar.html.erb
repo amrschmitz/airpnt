@@ -4,6 +4,14 @@
     <%= image_tag "logo.svg", height: 50 %>
   <% end %>
 
+  <%= form_tag plants_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control search-bar-general",
+      placeholder: "Find a plant"
+    %>
+  <% end %>
+
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
@@ -16,16 +24,16 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "avatar.jpg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= image_tag "avatar.png", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                <i class="fab fa-pagelines"></i></i> <%= t(".my_plants", default: "My plants") %>
               <% end %>
             </li>
             <li>
               <%= link_to new_plant_path do %>
-                <i class="fas fa-plus"></i>  <%= t(".settings", default: "Add a new plant") %>
+                <i class="fas fa-plus"></i>  <%= t(".add_new_plant", default: "Add a new plant") %>
               <% end %>
             </li>
             <li>
