@@ -17,10 +17,6 @@
 
     <% if user_signed_in? %>
 
-      <!-- Links when logged in -->
-      <%= link_to "Home", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Dashboard", history_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
@@ -28,7 +24,12 @@
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to my_plants_plants_path do %>
-                <i class="fab fa-pagelines"></i></i> <%= t(".my_plants", default: "My plants") %>
+                <i class="fab fa-pagelines"></i> <%= t(".my_plants", default: "My plants") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to history_path do %>
+                <i class="fas fa-tachometer-alt"></i> <%= t(".dashboard", default: "Dashboard") %>
               <% end %>
             </li>
             <li>
