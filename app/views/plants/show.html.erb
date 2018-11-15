@@ -33,7 +33,11 @@
     <div class="options">
       <h1><%= @plant.name %></h1>
       <p><%= @plant.description %></p>
-      <%= link_to 'Offer to take care of', new_plant_caring_path(params[:id]), class: "btn btn-primary", data: {confirm: 'Request successfully submitted!'}  %>
+      <% if @plant.user == current_user %>
+        <%= link_to 'Offer to take care of', root_path, class: "btn btn-primary hidden", data: {confirm: 'You cannot take care of your own plant.'}  %>
+        <% else %>
+        <%= link_to 'Offer to take care of', new_plant_caring_path(params[:id]), class: "btn btn-primary", data: {confirm: 'Request successfully submitted!'} %>
+        <% end %>
     </div>
   </div>
 
