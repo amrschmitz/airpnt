@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   end
 
   get 'history', to: 'carings#history'
+  patch 'accept/:id', to: 'carings#accept', as: 'accept'
+  patch 'decline/:id', to: 'carings#decline', as: 'decline'
 end

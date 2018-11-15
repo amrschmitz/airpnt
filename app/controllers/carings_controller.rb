@@ -1,5 +1,5 @@
 class CaringsController < ApplicationController
-  before_action :set_caring, only: [:show, :edit, :update, :destroy]
+  before_action :set_caring, only: [:show, :edit, :decline, :accept, :update, :destroy]
 
   def history
     @carings = Caring.where("user" == current_user)
@@ -24,6 +24,21 @@ class CaringsController < ApplicationController
 
   def edit
   end
+
+  def decline
+    @caring.status = "Declined"
+    @caring.save
+    authorize(@caring)
+    redirect_to history_path
+  end
+
+  def accept
+    @caring.status = "Accepted"
+    @caring.save
+    authorize(@caring)
+    redirect_to history_path
+  end
+
 
   def update
     if @caring.update(caring_params)

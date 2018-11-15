@@ -16,4 +16,13 @@ class CaringPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def decline?
+    true
+  end
+
+  def accept?
+    true
+  end
+
 end
