@@ -1,11 +1,13 @@
 <div class="container">
 
-<h1>Requests Made of You</h1>
+<h3>Requests Made of You</h3>
   <% if @received.empty? %>
-    <%= "You have no caring requests" %>
+    <p class='text-center'>
+      <%= "You have no caring requests" %>
+    </p>
   <% else %>
     <% @received.each do |caring| %>
-       <div class="caring-card">
+       <div class="caring-card" style="background-image: url('<%= cl_image_path plant.photo %>')>
         <% if caring.status == "Pending" %>
           <h2 class="pending status">Pending</h2>
           <%= link_to 'Accept', accept_path(caring.id), class: "accept-decline btn btn-primary", method: :patch, data: {confirm: 'Request has been accepted.'}  %>
@@ -15,7 +17,7 @@
         <% elsif caring.status == "Declined" %>
            <h2 class="declined status">Declined</h2>
         <% end %>
-        <h1 class="name"><%= caring.plant.name %></h1>
+        <h3 class="name"><%= caring.plant.name %></h3>
         <p class="timeframe"><%= caring.date_beginning %> to <%= caring.date_end %></p>
         <!-- caring.plant.user_id to determine who's avatar goes here -->
         <%= cl_image_tag caring.plant.user.photo, class: 'petit-avatar-des-cards' %>
@@ -23,12 +25,12 @@
     <% end %>
   <% end %>
 
-  <h1>Your Request History</h1>
+  <h3>Your Request History</h3>
   <% if @sent.empty? %>
     <%= "You have no caring requests" %>
   <% else %>
     <% @sent.each do |caring| %>
-       <div class="caring-card">
+       <div class="caring-card" style="background-image: url('<%= cl_image_path(caring.plant.photo) %>')>
         <% if caring.status == "Pending" %>
           <h2 class="pending status">Pending</h2>
         <% elsif caring.status == "Accepted" %>\
@@ -36,7 +38,7 @@
         <% elsif caring.status == "Declined" %>
            <h2 class="declined status">Declined</h2>
         <% end %>
-        <h1 class="name"><%= caring.plant.name %></h1>
+        <h3 class="name"><%= caring.plant.name %></h3>
         <p class="timeframe"><%= caring.date_beginning %> to <%= caring.date_end %></p>
         <!-- caring.plant.user_id to determine who's avatar goes here -->
         <%= cl_image_tag caring.plant.user.photo, class: 'petit-avatar-des-cards' %>
