@@ -1,21 +1,31 @@
 <div class="sign-wrapper">
   <div class="sign-box">
+    <h3>Modify your plant</h3>
+    <br>
     <%= simple_form_for @plant do |f| %>
-    <%= f.input :name %>
-    <br>
-    <%= f.input :description %>
-    <br>
-    <%= f.input :date_beginning %>
-    <%= f.input :date_end %>
-    <br>
-    <%= f.input :address, input_html: {
-        :id => "flat_address"
-      } %>
-    <br>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
-    <br>
-    <%= f.submit "Modify", class: "btn btn-primary" %>
+      <%= f.input :name %>
+      <br>
+      <%= f.input :description %>
+      <br>
+      <%= f.input :address, input_html: {
+          :id => "flat_address"
+        } %>
+      <br>
+      <%= f.label :date_beginning, "Available from" %>
+      <br>
+      <%= f.input_field :date_beginning, as: :date, html5: true %>
+      <br>
+      <%= f.label :date_end, "To" %>
+      <br>
+      <%= f.input_field :date_end, as: :date, html5: true %>
+      <br>
+      <br>
+      <%= f.input :photo %>
+      <%= f.input :photo_cache, as: :hidden %>
+      <br>
+      <div class="text-center">
+       <%= f.submit "Modify", class: "btn btn-primary" %>
+      </div>
     <% end %>
   </div>
 </div>
