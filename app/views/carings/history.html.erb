@@ -9,7 +9,9 @@
     <% else %>
       <% @received.each do |caring| %>
         <div class="caring-item">
-          <div class="caring-card" style="background-image: url('<%= cl_image_path caring.plant.photo %>')">
+          <div class="caring-card" style="background-image:
+          linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0)),
+          url('<%= cl_image_path caring.plant.photo %>')">
             <% if caring.status == "Pending" %>
               <h4 class="pending status">Pending</h4>
             <% elsif caring.status == "Accepted" %>\
@@ -43,7 +45,9 @@
     <% else %>
       <% @sent.each do |caring| %>
         <div class="caring-item">
-          <div class="caring-card" style="background-image: url('<%= cl_image_path(caring.plant.photo) %>')">
+          <div class="caring-card" style="background-image:
+          linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0)),
+          url('<%= cl_image_path(caring.plant.photo) %>')">
             <% if caring.status == "Pending" %>
               <h4 class="pending status">Pending</h4>
             <% elsif caring.status == "Accepted" %>\

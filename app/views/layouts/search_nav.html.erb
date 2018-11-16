@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Airpnt</title>
+    <title>TODO</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -13,7 +13,7 @@
   </head>
   <body>
     <% if user_signed_in? %>
-      <%= render 'shared/navbar' %>
+      <%= render 'shared/navbar_search' %>
     <% end %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
