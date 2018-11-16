@@ -4,7 +4,7 @@
 
 <div class="container">
   <h3>Your plants</h3>
-  <div class="wrapper">
+  <div id="plantcards">
     <% @plants.all.each do |plant| %>
       <%= link_to plant_path(plant) do %>
         <% if plant.photo.file.nil? %>
