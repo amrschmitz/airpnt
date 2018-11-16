@@ -18,7 +18,7 @@
           <% end %>
           <h3 class="name"><%= caring.plant.name %></h3>
           <!-- caring.plant.user_id to determine who's avatar goes here -->
-          <%= cl_image_tag caring.plant.user.photo, class: 'petit-avatar-des-cards' %>
+          <%= render "components/avatar", user: caring.plant.user, options_hash: { class: 'petit-avatar-des-cards' } %>
         </div>
         <p class="timeframe"> from: <%= caring.date_beginning %> to: <%= caring.date_end %></p>
         <% if caring.status == "Pending" %>
@@ -45,7 +45,7 @@
           <% end %>
           <h3 class="name"><%= caring.plant.name %></h3>
           <!-- caring.plant.user_id to determine who's avatar goes here -->
-          <%= cl_image_tag caring.plant.user.photo, class: 'petit-avatar-des-cards' %>
+          <%= render "components/avatar", user: caring.plant.user, options_hash: { class: 'petit-avatar-des-cards' } %>
         </div>
         <p class="timeframe"> from: <%= caring.date_beginning %> to: <%= caring.date_end %></p>
       <% end %>

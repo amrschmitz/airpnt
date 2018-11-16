@@ -7,7 +7,9 @@
     <br>
     <%= f.input :description %>
     <br>
-    <%= f.input :address %>
+    <%= f.input :address, input_html: {
+        :id => "flat_address"
+      } %>
     <br>
     <%= f.input :date_beginning %>
     <%= f.input :date_end %>
