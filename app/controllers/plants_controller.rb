@@ -7,8 +7,10 @@ class PlantsController < ApplicationController
   end
 
   def show
-    # @plant = Plant.where.not(latitude: nil, longitude: nil)
-
+    @caring = Caring.new(
+      date_beginning: @plant.date_beginning,
+      date_end: @plant.date_end
+    )
     @markers = [
       {
         lng: @plant.longitude,

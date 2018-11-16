@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h3>Requests Made of You</h3>
+  <h3>Requests made to you</h3>
   <div class="wrapper-caring-cards">
     <% if @received.empty? %>
       <p>
@@ -8,46 +8,58 @@
       </p>
     <% else %>
       <% @received.each do |caring| %>
-        <div class="caring-card" style="background-image: url('<%= cl_image_path caring.plant.photo %>')">
-          <% if caring.status == "Pending" %>
-            <h4 class="pending status">Pending</h4>
-          <% elsif caring.status == "Accepted" %>\
-            <h4 class="accepted status">Accepted</h4>
-          <% elsif caring.status == "Declined" %>
-             <h4 class="declined status">Declined</h4>
-          <% end %>
-          <h3 class="name"><%= caring.plant.name %></h3>
-          <!-- caring.plant.user_id to determine who's avatar goes here -->
-          <%= render "components/avatar", user: caring.plant.user, options_hash: { class: 'petit-avatar-des-cards' } %>
+        <div class="caring-item">
+          <div class="caring-card" style="background-image: url('<%= cl_image_path caring.plant.photo %>')">
+            <% if caring.status == "Pending" %>
+              <h4 class="pending status">Pending</h4>
+            <% elsif caring.status == "Accepted" %>\
+              <h4 class="accepted status">Accepted</h4>
+            <% elsif caring.status == "Declined" %>
+               <h4 class="declined status">Declined</h4>
+            <% end %>
+            <h3 class="name"><%= caring.plant.name %></h3>
+            <!-- caring.plant.user_id to determine who's avatar goes here -->
+            <%= render "components/avatar", user: caring.plant.user, options_hash: { class: 'petit-avatar-des-cards' } %>
+          </div>
+          <div class="caring-card-info">
+            <p class="timeframe"> <strong>From:</strong> <%= caring.date_beginning %> </p>
+            <p class="timeframe"> <strong>To:</strong> <%= caring.date_end %> </p>
+            <% if caring.status == "Pending" %>
+              <div class="caring-card-info-buttons">
+                <%= link_to 'Accept', accept_path(caring.id), class: "accept-decline btn btn-primary", method: :patch, data: {confirm: 'Request has been accepted.'}  %>
+                <%= link_to 'Decline', decline_path(caring.id), class: "accept-decline btn btn-danger", method: :patch, data: {confirm: 'Request has been declined.'}  %>
+              </div>
+            <% end %>
+          </div>
         </div>
-        <p class="timeframe"> from: <%= caring.date_beginning %> to: <%= caring.date_end %></p>
-        <% if caring.status == "Pending" %>
-          <%= link_to 'Accept', accept_path(caring.id), class: "accept-decline btn btn-primary", method: :patch, data: {confirm: 'Request has been accepted.'}  %>
-          <%= link_to 'Decline', decline_path(caring.id), class: "accept-decline btn btn-danger", method: :patch, data: {confirm: 'Request has been declined.'}  %>
-        <% end %>
       <% end %>
     <% end %>
   </div>
 
-  <h3>Your Request History</h3>
+  <h3>Request you have sent</h3>
   <div class="wrapper-caring-cards">
     <% if @sent.empty? %>
       <%= "You have no caring requests" %>
     <% else %>
       <% @sent.each do |caring| %>
-        <div class="caring-card" style="background-image: url('<%= cl_image_path(caring.plant.photo) %>')">
-          <% if caring.status == "Pending" %>
-            <h4 class="pending status">Pending</h4>
-          <% elsif caring.status == "Accepted" %>\
-            <h4 class="accepted status">Accepted</h4>
-          <% elsif caring.status == "Declined" %>
-             <h4 class="declined status">Declined</h4>
-          <% end %>
-          <h3 class="name"><%= caring.plant.name %></h3>
-          <!-- caring.plant.user_id to determine who's avatar goes here -->
-          <%= render "components/avatar", user: caring.plant.user, options_hash: { class: 'petit-avatar-des-cards' } %>
+        <div class="caring-item">
+          <div class="caring-card" style="background-image: url('<%= cl_image_path(caring.plant.photo) %>')">
+            <% if caring.status == "Pending" %>
+              <h4 class="pending status">Pending</h4>
+            <% elsif caring.status == "Accepted" %>\
+              <h4 class="accepted status">Accepted</h4>
+            <% elsif caring.status == "Declined" %>
+               <h4 class="declined status">Declined</h4>
+            <% end %>
+            <h3 class="name"><%= caring.plant.name %></h3>
+            <!-- caring.plant.user_id to determine who's avatar goes here -->
+            <%= render "components/avatar", user: caring.plant.user, options_hash: { class: 'petit-avatar-des-cards' } %>
+          </div>
+          <div class="caring-card-info">
+            <p class="timeframe"> <strong>From:</strong> <%= caring.date_beginning %> </p>
+            <p class="timeframe"> <strong>To:</strong> <%= caring.date_end %> </p>
+          </div>
         </div>
-        <p class="timeframe"> from: <%= caring.date_beginning %> to: <%= caring.date_end %></p>
       <% end %>
     <% end %>
   </div>

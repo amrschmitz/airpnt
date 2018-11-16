@@ -10,16 +10,20 @@
   justify-content: space-between;
 }
 
+/* Logo */
+.navbar-wagon-brand img {
+  height: 50px;
+}
+
+// Search bar
 .search-bar-general {
   width: 40vw;
   border-radius: 3px;
   border: none;
-}
-
-/* Logo */
-.navbar-wagon-brand img {
-  height: 50px;
-  margin-left: 10px;
+  background-color: #f9f9f9;
+  input {
+    font-size: 14px;
+  }
 }
 
 /* User Avatar */
@@ -39,17 +43,18 @@
 /* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
-  padding: 0 20px;
 }
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: #616668;
   font-size: 14px;
-}
-.navbar-wagon-link:hover {
-  color: black;
-  text-decoration: none;
+  a {
+    color: #616668;
+    padding-right: 20px;
+  }
+  a:hover {
+    color: black;
+  }
 }
 
 /* Dropdown menu */

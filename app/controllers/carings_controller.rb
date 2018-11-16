@@ -5,22 +5,26 @@ class CaringsController < ApplicationController
     @sent = current_user.carings
     @received = current_user.requested_carings
     authorize(@sent)
+    authorize(@received)
   end
 
   def show
-  end
-
-  def new
-    @user = current_user
-    @plant = Plant.find(params[:plant_id])
-    @caring = Caring.new(user_id: @user.id, plant_id: params[:plant_id], status: "Pending")
-    @caring.save
-    authorize @caring
-    redirect_to plant_path(@plant), notice: 'Request Submitted!.'
+    authorize(@caring)
   end
 
   def create
-    @caring = Caring.new()
+    @user = current_user
+    @plant = Plant.find(params[:plant_id])
+    @caring = Caring.new(
+      user_id: @user.id,
+      plant_id: params[:plant_id],
+      status: "Pending",
+      date_beginning: params[:caring][:date_beginning],
+      date_end: params[:caring][:date_end]
+    )
+    authorize @caring
+    @caring.save
+    redirect_to history_path, notice: 'Request Submitted!.'
   end
 
   def edit
@@ -40,7 +44,6 @@ class CaringsController < ApplicationController
     redirect_to history_path
   end
 
-
   def update
     if @caring.update(caring_params)
       redirect_to caring_path(@caring), notice: 'The caring was successfully updated.'
@@ -57,7 +60,7 @@ class CaringsController < ApplicationController
   private
 
   def caring_params
-    params.require(:caring).permit(:status)
+    params.require(:caring).permit(:status, :date_beginning, :date_end)
   end
 
   def set_caring

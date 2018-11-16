@@ -2,6 +2,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.caring-item {
+  display: flex;
+  margin-bottom: 30px;
 }
 
 .caring-card  {
@@ -14,6 +21,18 @@
   border-radius: 5px;
   margin: 0 30px;
   position: relative;
+}
+
+.caring-card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.caring-card-info-buttons {
+  flex-direction: row;
+  a {
+    margin: 5px;
+  }
 }
 
 .name {
