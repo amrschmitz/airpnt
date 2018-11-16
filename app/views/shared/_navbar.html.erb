@@ -4,6 +4,7 @@
     <%= image_tag "logo.svg", height: 50 %>
   <% end %>
 
+
   <%= form_tag root_path, method: :get, remote: true do %>
     <%= text_field_tag :query,
       params[:query],
