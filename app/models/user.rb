@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Dependencies
   has_many :plants, dependent: :destroy
   has_many :carings, dependent: :destroy
-  has_many :requested_carings, through: :plants, source: :carings, dependant: :destroy
+  has_many :requested_carings, through: :plants, source: :carings, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
