@@ -1,0 +1,23 @@
+  <h3>Your Request History</h3>
+  <div class="wrapper-caring-cards">
+    <% if @sent.empty? %>
+      <%= "You have no caring requests" %>
+    <% else %>
+      <% @sent.each do |caring| %>
+        <div class="caring-card" style="background-image: url('<%= cl_image_path(caring.plant.photo) %>')">
+          <% if caring.status == "Pending" %>
+            <h4 class="pending status">Pending</h4>
+          <% elsif caring.status == "Accepted" %>\
+            <h4 class="accepted status">Accepted</h4>
+          <% elsif caring.status == "Declined" %>
+             <h4 class="declined status">Declined</h4>
+          <% end %>
+          <h3 class="name"><%= caring.plant.name %></h3>
+          <!-- caring.plant.user_id to determine who's avatar goes here -->
+          <%= render "components/avatar", user: caring.plant.user, options_hash: { class: 'petit-avatar-des-cards' } %>
+        </div>
+        <p class="timeframe"> from: <%= caring.date_beginning %> to: <%= caring.date_end %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
