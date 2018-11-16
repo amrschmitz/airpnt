@@ -1,6 +1,6 @@
 class Plant < ApplicationRecord
   belongs_to :user
-  has_many :carings, dependant: :destroy
+  has_many :carings, dependent: :destroy
   mount_uploader :photo, PhotoUploader
   validates :user, :name, presence: true
   geocoded_by :address
