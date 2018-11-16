@@ -2,7 +2,7 @@
   <% if plant.photo.file.nil? %>
     <div class="plant-card" style="background-color: black">
   <% else %>
-    <div class="plant-card" style="background-image: url('<%= cl_image_path plant.photo %>')">
+    <div class="plant-card" style="background-image: linear-gradient(rgba(119, 124, 130, .5), rgba(119, 124, 130, 0)), url('<%= cl_image_path plant.photo %>')">
   <% end %>
     <p><%= plant.name %></p>
   <%= render "components/avatar", user: plant.user, options_hash: { class: 'petit-avatar-des-cards' } %>
