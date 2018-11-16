@@ -18,21 +18,17 @@
 
     <% if user_signed_in? %>
 
+      <div class="navbar-wagon-link">
+        <%= link_to 'Home', root_path %>
+        <%= link_to 'My plants', my_plants_plants_path %>
+        <%= link_to 'Dashboard', history_path %>
+      </div>
+
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <%= render "components/avatar", user: current_user, options_hash: { class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" } %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to my_plants_plants_path do %>
-                <i class="fab fa-pagelines"></i> <%= t(".my_plants", default: "My plants") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to history_path do %>
-                <i class="fas fa-tachometer-alt"></i> <%= t(".dashboard", default: "Dashboard") %>
-              <% end %>
-            </li>
             <li>
               <%= link_to new_plant_path do %>
                 <i class="fas fa-plus"></i>  <%= t(".add_new_plant", default: "Add a new plant") %>

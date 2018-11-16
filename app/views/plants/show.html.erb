@@ -32,13 +32,25 @@
     <%= cl_image_tag @plant.photo, height: 400, width: 400 %>
     <div class="options">
       <h1><%= @plant.name %></h1>
-      <p><strong> From <%= @plant.date_beginning %> to <%= @plant.date_end %></strong></p>
-      <p><%= @plant.description %></p>
+
+      <p><strong> Available from: </strong> <%= @plant.date_beginning %> </p>
+      <p><strong> Available to: </strong> <%= @plant.date_end %> </p>
+      <p><strong> Description: </strong> <%= @plant.description %> </p>
+
       <% if @plant.user == current_user %>
         <%= link_to 'Offer to take care of', root_path, class: "btn btn-primary hidden", data: {confirm: 'You cannot take care of your own plant.'}  %>
-        <% else %>
-        <%= link_to 'Offer to take care of', new_plant_caring_path(params[:id]), class: "btn btn-primary", data: {confirm: 'Request successfully submitted!'} %>
+      <% else %>
+        <%= simple_form_for [@plant, @caring] do |f| %>
+          <%= f.label :date_beginning, "Take care from:" %>
+          <%= f.input_field :date_beginning, as: :date, html5: true %>
+          <br>
+          <%= f.label :date_end, "Take care to:" %>
+          <%= f.input_field :date_end, as: :date, html5: true %>
+          <br>
+          <br>
+          <%= f.submit 'Take care of this plant', class: 'btn btn-primary' %>
         <% end %>
+      <% end %>
     </div>
   </div>
 
