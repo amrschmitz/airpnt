@@ -31,3 +31,11 @@ if (mapElement) { // only build a map if there's a div#map to inject into
     map.fitBounds(bounds, { duration: 0, padding: 75 })
   }
 }
+const addressInput = document.getElementById('flat_address');
+
+if (addressInput) {
+  const places = require('places.js');
+  const placesAutocomplete = places({
+    container: addressInput
+  });
+}
