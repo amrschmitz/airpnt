@@ -6,9 +6,9 @@
   <h3>Find a plant to take care of</h3>
   <div class="wrapper">
     <div id="plantcards">
-    <% @plants.each do |plant| %>
-    <%= render 'components/plantscard', plant: plant %>
-    <% end %>
+      <% @plants.each do |plant| %>
+        <%= render 'components/plantscard', plant: plant %>
+      <% end %>
     </div>
   </div>
 </div>
