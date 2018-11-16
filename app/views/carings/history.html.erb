@@ -1,46 +1,16 @@
 <div class="container">
-
-<h1>Requests Made of You</h1>
-  <% if @received.empty? %>
-    <%= "You have no caring requests" %>
-  <% else %>
-    <% @received.each do |caring| %>
-       <div class="caring-card">
-        <% if caring.status == "Pending" %>
-          <h2 class="pending status">Pending</h2>
-          <%= link_to 'Accept', accept_path(caring.id), class: "accept-decline btn btn-primary", method: :patch, data: {confirm: 'Request has been accepted.'}  %>
-          <%= link_to 'Decline', decline_path(caring.id), class: "accept-decline btn btn-danger", method: :patch, data: {confirm: 'Request has been declined.'}  %>
-        <% elsif caring.status == "Accepted" %>\
-          <h2 class="accepted status">Accepted</h2>
-        <% elsif caring.status == "Declined" %>
-           <h2 class="declined status">Declined</h2>
-        <% end %>
-        <h1 class="name"><%= caring.plant.name %></h1>
-        <p class="timeframe"><%= caring.date_beginning %> to <%= caring.date_end %></p>
-        <!-- caring.plant.user_id to determine who's avatar goes here -->
-        <%= cl_image_tag caring.plant.user.photo, class: 'petit-avatar-des-cards' %>
-      </div>
-    <% end %>
-  <% end %>
-
-  <h1>Your Request History</h1>
-  <% if @sent.empty? %>
-    <%= "You have no caring requests" %>
-  <% else %>
-    <% @sent.each do |caring| %>
-       <div class="caring-card">
-        <% if caring.status == "Pending" %>
-          <h2 class="pending status">Pending</h2>
-        <% elsif caring.status == "Accepted" %>\
-          <h2 class="accepted status">Accepted</h2>
-        <% elsif caring.status == "Declined" %>
-           <h2 class="declined status">Declined</h2>
-        <% end %>
-        <h1 class="name"><%= caring.plant.name %></h1>
-        <p class="timeframe"><%= caring.date_beginning %> to <%= caring.date_end %></p>
-        <!-- caring.plant.user_id to determine who's avatar goes here -->
-        <%= cl_image_tag caring.plant.user.photo, class: 'petit-avatar-des-cards' %>
-      </div>
-    <% end %>
-  <% end %>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#recieved">Recieved</a></li>
+    <li><a data-toggle="tab" href="#sent">Sent</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="recieved" class="tab-pane fade in active">
+      <%= render 'carings/recieved_tab' %>
+    </div>
+    <div id="sent" class="tab-pane fade">
+      <%= render 'carings/sent_tab' %>
+    </div>
+  </div>
 </div>
+
+
