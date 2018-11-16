@@ -5,7 +5,12 @@
 <div class="container">
   <h3>Find a plant to take care of</h3>
   <div class="wrapper">
-    <% Plant.all.each do |plant| %>
+    <% if params[:query].present? %>
+      <% @plants = Plant.where(name: params[:query]) %>
+    <% else %>
+      <% @plants = Plant.all %>
+    <% end %>
+    <% @plants.each do |plant| %>
       <%= link_to plant_path(plant) do %>
         <% if plant.photo.file.nil? %>
           <div class="plant-card" style="background-color: black">
