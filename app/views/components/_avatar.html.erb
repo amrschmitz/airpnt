@@ -1,0 +1,5 @@
+<% if user.photo? %>
+  <%= cl_image_tag(user.photo, options_hash) %>
+<% else %>
+  <%= image_tag('avatar2.png', options_hash) %>
+<% end %>
