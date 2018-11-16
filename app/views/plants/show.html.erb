@@ -32,6 +32,7 @@
     <%= cl_image_tag @plant.photo, height: 400, width: 400 %>
     <div class="options">
       <h1><%= @plant.name %></h1>
+      <p><strong> From <%= @plant.date_beginning %> to <%= @plant.date_end %></strong></p>
       <p><%= @plant.description %></p>
       <% if @plant.user == current_user %>
         <%= link_to 'Offer to take care of', root_path, class: "btn btn-primary hidden", data: {confirm: 'You cannot take care of your own plant.'}  %>
