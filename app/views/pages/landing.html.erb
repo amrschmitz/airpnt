@@ -5,18 +5,11 @@
 <div class="container">
   <h3>Find a plant to take care of</h3>
   <div class="wrapper">
-    <% Plant.all.each do |plant| %>
-      <%= link_to plant_path(plant) do %>
-        <% if plant.photo.file.nil? %>
-          <div class="plant-card" style="background-color: black">
-        <% else %>
-          <div class="plant-card" style="background-image: url('<%= cl_image_path plant.photo %>')">
-        <% end %>
-          <p><%= plant.name %></p>
-          <%= render "components/avatar", user: plant.user, options_hash: { class: 'petit-avatar-des-cards' } %>
-        </div>
-      <% end %>
+    <div id="plantcards">
+    <% @plants.each do |plant| %>
+    <%= render 'components/plantscard', plant: plant %>
     <% end %>
+    </div>
   </div>
 </div>
 

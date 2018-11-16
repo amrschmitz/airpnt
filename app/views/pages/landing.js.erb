@@ -1,0 +1,9 @@
+var plantsHTML = "";
+
+<% @plants.each do |plant|%>
+plantsHTML= plantsHTML + "<%= j(render 'components/plantscard', plant: plant) %>"
+<% end %>
+
+var plantCards = document.getElementById('plantcards')
+plantCards.innerHTML = plantsHTML
+
