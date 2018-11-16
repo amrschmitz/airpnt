@@ -7,8 +7,8 @@ class Plant < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
   
   include PgSearch
-  pg_search_scope :search_by_title_and_syllabus,
-    against: [ :title, :syllabus ],
+  pg_search_scope :search_by_name_and_description,
+    against: [ :name, :description ],
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
