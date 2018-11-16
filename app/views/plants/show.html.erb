@@ -42,7 +42,11 @@
       <% else %>
         <%= simple_form_for [@plant, @caring] do |f| %>
           <%= f.label :date_beginning, "Take care from:" %>
-          <%= f.input_field :date_beginning, as: :date, html5: true %>
+          <%= f.input_field :date_beginning,
+          as: :date,
+          start_day: Date.today,
+          end_day: @plant.date_end,
+          html5: true %>
           <br>
           <%= f.label :date_end, "Take care to:" %>
           <%= f.input_field :date_end, as: :date, html5: true %>
